@@ -10,7 +10,7 @@ from viewers import view_programming, view_everyday, view_archive_programming, v
 # Start menu
 def start_menu():
     print("What would you like to do?\n")
-    print("1. Add new project\n2. View programming projects\n3. View everyday projects\n4. View archived projects\n5. Exit program\n\n")
+    print("1. Add new project\n2. View active programming projects\n3. View active everyday projects\n4. View archived projects\n5. Exit program\n\n")
     choice = str(input("Enter choice: "))
     if choice == "1":
         clear_terminal()
