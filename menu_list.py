@@ -1,5 +1,6 @@
 # Imports
 import projects
+import project_lists
 # from projects import ProgrammingProject, programming_projects, EverydayProject, everyday_projects
 from utilities import clear_terminal
 from viewers import view_programming, view_everyday, view_archive_programming, view_archive_everyday, view_full_archive
@@ -37,10 +38,10 @@ def add_project_menu():
     choice = str(input("Enter choice: "))    
     if choice == "1":
         clear_terminal()
-        projects.ProgrammingProject.add_project_programming(projects.programming_projects)
+        projects.ProgrammingProject.add_project_programming(project_lists.programming_projects)
     elif choice == "2":
         clear_terminal()
-        projects.EverydayProject.add_project_everyday(projects.everyday_projects)
+        projects.EverydayProject.add_project_everyday(project_lists.everyday_projects)
     elif choice == "3":
         clear_terminal()
         start_menu()

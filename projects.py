@@ -3,8 +3,7 @@ import json
 import menu_list
 
 from datetime import datetime
-# from menu_list import start_menu
-from project_lists import pp_file, ep_file, programming_projects, everyday_projects
+from project_lists import pp_file, ep_file  #, programming_projects, everyday_projects
 
 # Project class, initializing project parameters 
 class Project:
@@ -122,6 +121,9 @@ def modify_programming_project(pf, pl):
         link = input("Project link: ")
         if link == "":
             link = project_to_change["link"]
+        notes = input("Project notes: ")
+        if notes == "":
+            notes = project_to_change["notes"]
         progress = input("Project progress: ")
         if progress == "":
             progress = project_to_change["progress"]
@@ -134,6 +136,7 @@ def modify_programming_project(pf, pl):
             "finish" : finish,
             "language" : language,
             "link" : link,
+            "notes" : notes,
             "progress" : progress,
             "status" : status
             }
@@ -171,6 +174,9 @@ def modify_everyday_project(ef, el):
     finish = input("Project finish date: ")
     if finish == "":
         finish = project_to_change["finish"]
+    notes = input("Project notes: ")
+    if notes == "":
+        notes = project_to_change["notes"]
     progress = input("Project progress: ")
     if progress == "":
         progress = project_to_change["progress"]
@@ -181,6 +187,7 @@ def modify_everyday_project(ef, el):
         "name" : name,
         "start" : start,
         "finish" : finish,
+        "notes" : notes,
         "progress" : progress,
         "status" : status
         }
@@ -200,21 +207,31 @@ def archive_project(project_file, project_list, current_file, current_list, full
     current_list.clear()
     full_archive_list.clear()
 
-    with open(project_file, "r") as file:
-        projects = json.load(file)
-        for i, project in enumerate(projects):
-            print(f"{i + 1}. {project}\n")
-            project_list.append(project)
+    try:
+        with open(project_file, "r") as file:
+            projects = json.load(file)
+            for i, project in enumerate(projects):
+                print(f"{i + 1}. {project}\n")
+                project_list.append(project)
+    except:
+        pass
 
-    with open(current_file, "r") as file:
-        projects = json.load(file)
-        for project in projects:
-            current_list.append(project)
+    try:
+        with open(current_file, "r") as file:
+            projects = json.load(file)
+            for project in projects:
+                current_list.append(project)
+    except:
+        pass        
 
-    with open(full_archive_file, "r") as file:
-        projects = json.load(file)
-        for project in projects:
-            full_archive_list.append(project)
+    try:
+        with open(full_archive_file, "r") as file:
+            projects = json.load(file)
+            for project in projects:
+                full_archive_list.append(project)
+    except:
+        pass
+
 
     idx = int(input("Chose project number to archive: "))
     project_to_archive = project_list[idx - 1]
@@ -230,6 +247,23 @@ def archive_project(project_file, project_list, current_file, current_list, full
     full_archive_list.append(project_to_archive)
     with open(full_archive_file, "w") as file:
         json.dump(full_archive_list, file)
+
+    '''except:
+        idx = int(input("Chose project number to archive: "))
+        project_to_archive = project_list[idx - 1]
+
+        project_list.remove(project_to_archive)
+        with open(project_file, "w") as file:
+            json.dump(project_list, file)
+
+        current_list.append(project_to_archive)
+        with open(current_file, "w") as file:
+            json.dump(current_list, file)
+            
+        full_archive_list.append(project_to_archive)
+        with open(full_archive_file, "w") as file:
+            json.dump(full_archive_list, file)'''
+
 
     menu_list.clear_terminal()
     menu_list.start_menu()
