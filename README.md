@@ -30,7 +30,7 @@ When viewing a active projects of either type (programming or everyday), a proje
 ### **ARCHIVING PROJECTS**
 When viewing active projects of either type, a project can be selected for archiving. This moves the project from active projects to the archive for the current project type, as well as to the full archive. Once archived, projects cannot be modified further.
 
-### ** VIEWING ARCHIVED PROJECTS
+### **VIEWING ARCHIVED PROJECTS**
 This menu allows the user to:
 * View archive of programming projects
 * View archive of everyday projects
@@ -39,6 +39,6 @@ This menu allows the user to:
 * Exit program
 
 All the written code and all architecture for this project was written by Simon Jäger
-© Simon Jäger
-Lund, Sweden
+© Simon Jäger<br>
+Lund, Sweden<br>
 2025-
