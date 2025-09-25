@@ -8,18 +8,19 @@ from project_lists import pp_file, ep_file, programming_projects, everyday_proje
 
 # Project class, initializing project parameters 
 class Project:
-    def __init__(self, name, start, finish, progress, status):
+    def __init__(self, name, start, finish, progress, status, notes):
         self.name = name
         self.start = start
         self.finish = finish
         self.progress = progress
         self.status = status
+        self.notes = notes
         
 
 # Programming class, project parameters from parent class, and additional
 class ProgrammingProject(Project):
-    def __init__(self, name, start, finish, progress, status, language, link):
-        super().__init__(name, start, finish, progress, status, language, link)
+    def __init__(self, name, start, finish, progress, status, language, link, notes):
+        super().__init__(name, start, finish, progress, status, language, link, notes)
         self.language = language
         self.link = link
     
@@ -35,6 +36,7 @@ class ProgrammingProject(Project):
             finish = datetime.today().strftime("%Y-%m-%d")
         language = input("Project language(s): ")
         link = input("Project link: ")
+        notes = input("Project notes: ")
         progress = input("Project progress: ")
         status = input("Project status: ")
         project = {
@@ -43,6 +45,7 @@ class ProgrammingProject(Project):
             "finish" : finish,
             "language" : language,
             "link" : link,
+            "notes" : notes,
             "progress" : progress,
             "status" : status
             }
@@ -51,13 +54,15 @@ class ProgrammingProject(Project):
         with open(pp_file, "w") as file:
             json.dump(pp, file)
         
+        menu_list.clear_terminal()
         menu_list.start_menu()
+        
 
 
 # Everyday class, utilizing parameters from parent class
 class EverydayProject(Project):
-    def __init__(self, name, start, finish, progress, status):
-        super().__init__(name, start, finish, progress, status)
+    def __init__(self, name, start, finish, progress, status, notes):
+        super().__init__(name, start, finish, progress, status, notes)
 
 
     # Add everyday project function
@@ -69,12 +74,14 @@ class EverydayProject(Project):
         finish = input("Project finish date (if today, leave empty and press enter): ")
         if finish == "":
             finish = datetime.today().strftime("%Y-%m-%d")
+        notes = input("Project notes: ")
         progress = input("Project progress: ")
         status = input("Project status: ")
         project = {
             "name" : name,
             "start" : start,
             "finish" : finish,
+            "notes" : notes,
             "progress" : progress,
             "status" : status
             }        
@@ -83,6 +90,7 @@ class EverydayProject(Project):
         with open(ep_file, "w") as file:
             json.dump(ep, file)
 
+        menu_list.clear_terminal()
         menu_list.start_menu()
 
 
@@ -129,8 +137,8 @@ def modify_programming_project(pf, pl):
             "progress" : progress,
             "status" : status
             }
-        print(f"Project to change: {project_to_change}")
-        print(f"Project changed to: {changed_project}")
+        # print(f"Project to change: {project_to_change}")
+        # print(f"Project changed to: {changed_project}")
         pl.remove(project_to_change)
         pl.append(changed_project)
         print(pl)
@@ -138,6 +146,7 @@ def modify_programming_project(pf, pl):
         with open(pp_file, "w") as file:
             json.dump(pl, file)
 
+    menu_list.clear_terminal()
     menu_list.start_menu()
 
 
@@ -181,6 +190,7 @@ def modify_everyday_project(ef, el):
     with open(ep_file, "w") as file:
         json.dump(el, file)
 
+    menu_list.clear_terminal()
     menu_list.start_menu()
 
 
@@ -221,5 +231,6 @@ def archive_project(project_file, project_list, current_file, current_list, full
     with open(full_archive_file, "w") as file:
         json.dump(full_archive_list, file)
 
+    menu_list.clear_terminal()
     menu_list.start_menu()
     

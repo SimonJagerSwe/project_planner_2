@@ -80,6 +80,7 @@ def view_archive_programming():
                 print(f"{i + 1}. {project}")
         except:
             print("Currently no programming projects in archive")
+            menu_list.clear_terminal()
             menu_list.view_archive()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
@@ -106,6 +107,7 @@ def view_archive_everyday():
                 print(f"{i + 1}. {project}")
     except:
         print("Currently no everyday projects in archive")
+        menu_list.clear_terminal()
         menu_list.view_archive()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
@@ -132,8 +134,9 @@ def view_full_archive():
                 print(f"{i + 1}. {project}")
     except:
         print("Archive currently empty")
+        menu_list.clear_terminal()
         menu_list.view_archive()
-        
+
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
         clear_terminal()
