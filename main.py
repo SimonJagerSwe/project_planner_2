@@ -1,5 +1,5 @@
 # Imports
-from menus import start_menu
+from menu_list import start_menu
 from project_lists import initialize_project_lists
 
 # Logo

@@ -1,10 +1,10 @@
 # Imports
 import json
 
-from menus import add_project_menu
+from menu_list import add_project_menu, start_menu
 from project_lists import ep_file, ea_file, fa_file, full_archive, pp_file, pa_file, programming_projects, programming_archive, everyday_projects, everyday_archive
 from projects import modify_programming_project, modify_everyday_project, archive_project 
-from utilities import clear_terminal, start_menu
+from utilities import clear_terminal
 
 # View current programming projects
 def view_programming():
