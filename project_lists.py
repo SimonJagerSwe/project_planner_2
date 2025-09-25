@@ -25,26 +25,38 @@ def initialize_project_lists():
 
     with open(pa_file, "r") as file:
         try:
-            pa = json.load(file)
-            for project in pa:
+            p_archive = json.load(file)
+            for project in p_archive:
                 programming_archive.append(project)
         except:
-            print("Currently no everyday projects available")
+            print("Currently no programming projects in archive")
             pass
 
     with open(ep_file, "r") as file:
-        e_projects = json.load(file)
-        for project in e_projects:
-            everyday_projects.append(project)
+        try:
+            e_projects = json.load(file)
+            for project in e_projects:
+                everyday_projects.append(project)
+        except:
+            print("Currently no everyday projects available")
+            pass
     
     with open(ea_file, "r") as file:
-        ea = json.load(file)
-        for project in ea:
-            everyday_archive.append(project)
+        try:
+            e_achive = json.load(file)
+            for project in e_achive:
+                everyday_archive.append(project)
+        except:
+            print("Currently no everyday projects in archive") 
+            pass
 
     with open(fa_file, "r") as file:
-        fa = json.load(file)
-        for project in fa:
-            full_archive.append(project)
+        try:
+            f_archive = json.load(file)
+            for project in f_archive:
+                full_archive.append(project)
+        except:
+            print("Archive currently empty")
+            pass
 
     return programming_projects, programming_archive, everyday_projects, everyday_archive, full_archive

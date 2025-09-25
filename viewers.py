@@ -74,9 +74,14 @@ def view_everyday():
 def view_archive_programming():
     print("Viewing programming archive")
     with open(pa_file, "r") as file:
-        archive = json.load(file)
-        for i, project in enumerate(archive):
-            print(f"{i + 1}. {project}")
+        try:
+            archive = json.load(file)
+            for i, project in enumerate(archive):
+                print(f"{i + 1}. {project}")
+        except:
+            print("Currently no programming projects in archive")
+            menu_list.view_archive()
+
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
         clear_terminal()
@@ -94,10 +99,15 @@ def view_archive_programming():
 # Everyday archive viewer
 def view_archive_everyday():
     print("Viewing everyday project archive")
-    with open(ea_file, "r") as file:
-        archive = json.load(file)
-        for i, project in enumerate(archive):
-            print(f"{i + 1}. {project}")
+    try:
+        with open(ea_file, "r") as file:
+            archive = json.load(file)
+            for i, project in enumerate(archive):
+                print(f"{i + 1}. {project}")
+    except:
+        print("Currently no everyday projects in archive")
+        menu_list.view_archive()
+
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
         clear_terminal()
@@ -115,10 +125,15 @@ def view_archive_everyday():
 # Full archive viewer
 def view_full_archive():
     print("Viewing full archive")
-    with open(fa_file, "r") as file:
-        archive = json.load(file)
-        for i, project in enumerate(archive):
-            print(f"{i + 1}. {project}")
+    try:
+        with open(fa_file, "r") as file:
+            archive = json.load(file)
+            for i, project in enumerate(archive):
+                print(f"{i + 1}. {project}")
+    except:
+        print("Archive currently empty")
+        menu_list.view_archive()
+        
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
         clear_terminal()
