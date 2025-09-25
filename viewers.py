@@ -1,6 +1,7 @@
 # Imports
 import json
 import menu_list
+import utilities
 
 # from menu_list import add_project_menu, start_menu
 from project_lists import ep_file, ea_file, fa_file, full_archive, pp_file, pa_file, programming_projects, programming_archive, everyday_projects, everyday_archive
@@ -10,15 +11,29 @@ from utilities import clear_terminal
 # View current programming projects
 def view_programming():
     print("Viewing programming projects")
-    try:
+    # Working print, not very good looking
+    '''try:
         with open(pp_file, "r") as file:
             projects = json.load(file)
             for i, project in enumerate(projects):
                 print(f"{i + 1}. {project}\n")
     except:
         print("No programming projects available, returning to main menu...")
+        menu_list.clear_terminal()
+        menu_list.start_menu()
+    '''
+
+    # Testing pretty print 
+    try:
+        project_file = open(pp_file)
+        projects = json.load(project_file)
+        for i, project in enumerate(projects):
+            print(f"\n{(i + 1)}. {json.dumps(project, indent=4)}")            
+    except:
+        print("No programming projects available, returning to main menu...")
         menu_list.start_menu()
 
+ 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Modify project\n3. Archive project\n4. Return to main menu\n5. Exit program\n\nChoice: "))
     if choice == "1":
         clear_terminal()
@@ -33,7 +48,7 @@ def view_programming():
         clear_terminal()
         menu_list.start_menu()
     elif choice == "5":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice")
         view_programming()
@@ -42,14 +57,27 @@ def view_programming():
 # View current everyday projects    
 def view_everyday():
     print("Viewing everyday projects")
-    try:
+    # Working print, not very good looking 
+    '''try:
         with open(ep_file, "r") as file:
             projects = json.load(file)
             for i, project in enumerate(projects):
                 print(f"{i + 1}. {project}\n")                
     except:
         print("No everyday projects available, returning to main menu...")
+        menu_list.clear_terminal()
         menu_list.start_menu()        
+    '''
+
+    # Testing pretty print
+    try:
+        project_file = open(ep_file)
+        projects = json.load(project_file)
+        for i, project in enumerate(projects):
+            print(f"\n{i + 1}. {json.dumps(project, indent=4)}")
+    except:
+        print("No everyday projects available, returning to main menu...")
+        menu_list.start_menu()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Modify project\n3. Archive project\n4. Return to main menu\n5. Exit program\n\nChoice: "))
     if choice == "1":
@@ -65,7 +93,7 @@ def view_everyday():
         clear_terminal()
         menu_list.start_menu()
     elif choice == "5":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice")
         view_everyday()
@@ -73,7 +101,8 @@ def view_everyday():
 # Programming archive viewer
 def view_archive_programming():
     print("Viewing programming archive")
-    with open(pa_file, "r") as file:
+    # Working print, not very good looking
+    '''with open(pa_file, "r") as file:
         try:
             archive = json.load(file)
             for i, project in enumerate(archive):
@@ -82,6 +111,17 @@ def view_archive_programming():
             print("Currently no programming projects in archive")
             menu_list.clear_terminal()
             menu_list.view_archive()
+    '''
+
+    # Testing pretty print
+    try:
+        project_file = open(pa_file)
+        projects = json.load(project_file)
+        for i, project in enumerate(projects):
+            print(f"\n{i + 1}. {json.dumps(project, indent=4)}")
+    except:
+        print("No programming projects archived, returning to main menu...")
+        menu_list.start_menu()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
@@ -91,7 +131,7 @@ def view_archive_programming():
         clear_terminal()
         menu_list.start_menu()
     elif choice == "3":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice")
         view_archive_programming()
@@ -100,7 +140,8 @@ def view_archive_programming():
 # Everyday archive viewer
 def view_archive_everyday():
     print("Viewing everyday project archive")
-    try:
+    # Working print, not very good looking
+    '''try:
         with open(ea_file, "r") as file:
             archive = json.load(file)
             for i, project in enumerate(archive):
@@ -109,6 +150,17 @@ def view_archive_everyday():
         print("Currently no everyday projects in archive")
         menu_list.clear_terminal()
         menu_list.view_archive()
+    '''
+
+    # Testing pretty print
+    try:
+        project_file = open(ea_file)
+        projects = json.load(project_file)
+        for i, project in enumerate(projects):
+            print(f"\n{i + 1}. {json.dumps(project, indent=4)}")
+    except:
+        print("No everyday projects archived, returning to main menu...")
+        menu_list.start_menu()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
@@ -118,7 +170,7 @@ def view_archive_everyday():
         clear_terminal()
         menu_list.start_menu()
     elif choice == "3":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice")
         view_archive_everyday()
@@ -127,7 +179,8 @@ def view_archive_everyday():
 # Full archive viewer
 def view_full_archive():
     print("Viewing full archive")
-    try:
+    # Working print, not very good looking
+    '''try:
         with open(fa_file, "r") as file:
             archive = json.load(file)
             for i, project in enumerate(archive):
@@ -136,6 +189,17 @@ def view_full_archive():
         print("Archive currently empty")
         menu_list.clear_terminal()
         menu_list.view_archive()
+    '''
+
+    # Testing pretty print
+    try:
+        project_file = open(fa_file)
+        projects = json.load(project_file)
+        for i, project in enumerate(projects):
+            print(f"\n{i + 1}. {json.dumps(project, indent=4)}")
+    except:
+        print("No everyday projects archived, returning to main menu...")
+        menu_list.start_menu()
 
     choice = str(input("\n\nWhat do you want to do now?\n1. Add new project\n2. Return to main menu\n3. Exit program\n\nChoice: "))
     if choice == "1":
@@ -145,7 +209,7 @@ def view_full_archive():
         clear_terminal()
         menu_list.start_menu()
     elif choice == "3":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice")
         view_full_archive()

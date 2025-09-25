@@ -1,7 +1,8 @@
 # Imports
 import projects
 import project_lists
-# from projects import ProgrammingProject, programming_projects, EverydayProject, everyday_projects
+import utilities
+
 from utilities import clear_terminal
 from viewers import view_programming, view_everyday, view_archive_programming, view_archive_everyday, view_full_archive
 
@@ -24,7 +25,7 @@ def start_menu():
         clear_terminal()
         view_archive()
     elif choice == "5":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice, pick a number above")
         clear_terminal()
@@ -46,7 +47,7 @@ def add_project_menu():
         clear_terminal()
         start_menu()
     elif choice == "4":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice, pick a number above")
         add_project_menu()
@@ -70,7 +71,7 @@ def view_archive():
         clear_terminal()
         start_menu()
     elif choice == "5":
-        exit()
+        utilities.exit()
     else:
         print("Invalid choice, pick a number above")
         view_archive()

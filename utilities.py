@@ -1,8 +1,7 @@
 # Imports
+import menu_list
 import os
 import sys
-
-import menu_list
 
 
 # Clear terminal

@@ -3,7 +3,7 @@ import json
 import menu_list
 
 from datetime import datetime
-from project_lists import pp_file, ep_file  #, programming_projects, everyday_projects
+from project_lists import pp_file, ep_file
 
 # Project class, initializing project parameters 
 class Project:
@@ -21,8 +21,7 @@ class ProgrammingProject(Project):
     def __init__(self, name, start, finish, progress, status, language, link, notes):
         super().__init__(name, start, finish, progress, status, language, link, notes)
         self.language = language
-        self.link = link
-    
+        self.link = link    
 
     # Add programming project function
     def add_project_programming(pp):
@@ -62,7 +61,6 @@ class ProgrammingProject(Project):
 class EverydayProject(Project):
     def __init__(self, name, start, finish, progress, status, notes):
         super().__init__(name, start, finish, progress, status, notes)
-
 
     # Add everyday project function
     def add_project_everyday(ep):
@@ -104,7 +102,6 @@ def modify_programming_project(pf, pl):
     
         choice = int(input("Chose project number to modify: "))
         project_to_change = projects[choice - 1]
-        # print(project_to_change)
         print("If project variable is to be unchanged, just press Enter")           
         name = input("Project name: ")
         if name == "":
@@ -140,8 +137,7 @@ def modify_programming_project(pf, pl):
             "progress" : progress,
             "status" : status
             }
-        # print(f"Project to change: {project_to_change}")
-        # print(f"Project changed to: {changed_project}")
+        
         pl.remove(project_to_change)
         pl.append(changed_project)
         print(pl)
@@ -247,23 +243,6 @@ def archive_project(project_file, project_list, current_file, current_list, full
     full_archive_list.append(project_to_archive)
     with open(full_archive_file, "w") as file:
         json.dump(full_archive_list, file)
-
-    '''except:
-        idx = int(input("Chose project number to archive: "))
-        project_to_archive = project_list[idx - 1]
-
-        project_list.remove(project_to_archive)
-        with open(project_file, "w") as file:
-            json.dump(project_list, file)
-
-        current_list.append(project_to_archive)
-        with open(current_file, "w") as file:
-            json.dump(current_list, file)
-            
-        full_archive_list.append(project_to_archive)
-        with open(full_archive_file, "w") as file:
-            json.dump(full_archive_list, file)'''
-
 
     menu_list.clear_terminal()
     menu_list.start_menu()
