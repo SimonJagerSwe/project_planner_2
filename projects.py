@@ -1,10 +1,10 @@
 # Imports
 import json
-
+import menu_list
 
 from datetime import datetime
-from menu_list import start_menu
-from project_lists import pp_file, ep_file
+# from menu_list import start_menu
+from project_lists import pp_file, ep_file, programming_projects, everyday_projects
 
 # Project class, initializing project parameters 
 class Project:
@@ -51,7 +51,7 @@ class ProgrammingProject(Project):
         with open(pp_file, "w") as file:
             json.dump(pp, file)
         
-        start_menu()
+        menu_list.start_menu()
 
 
 # Everyday class, utilizing parameters from parent class
@@ -83,7 +83,7 @@ class EverydayProject(Project):
         with open(ep_file, "w") as file:
             json.dump(ep, file)
 
-        start_menu()
+        menu_list.start_menu()
 
 
 # Modifying programming projects, calling programming projects file and list
@@ -138,7 +138,7 @@ def modify_programming_project(pf, pl):
         with open(pp_file, "w") as file:
             json.dump(pl, file)
 
-    start_menu()
+    menu_list.start_menu()
 
 
 # Modify everyday project, calling the everyday projects file and list
@@ -181,7 +181,7 @@ def modify_everyday_project(ef, el):
     with open(ep_file, "w") as file:
         json.dump(el, file)
 
-    start_menu()
+    menu_list.start_menu()
 
 
 # Project archiving
@@ -221,5 +221,5 @@ def archive_project(project_file, project_list, current_file, current_list, full
     with open(full_archive_file, "w") as file:
         json.dump(full_archive_list, file)
 
-    start_menu()
+    menu_list.start_menu()
     

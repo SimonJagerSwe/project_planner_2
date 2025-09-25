@@ -2,7 +2,7 @@
 import os
 import sys
 
-from menu_list import start_menu
+import menu_list
 
 
 # Clear terminal
@@ -16,7 +16,7 @@ def exit():
     if choice == "y":
         sys.exit("\nExiting program")
     elif choice == "n":
-        start_menu()
+        menu_list.start_menu()
     else:
         print("Invalid option, type 'Y' for yes or 'N' for no")
         exit()

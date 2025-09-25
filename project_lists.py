@@ -2,28 +2,36 @@
 import json
 
 # Project & archive files
-pp_file = "programming_projects.json"
+pp_file = "projects_and_archives/programming_projects.json"
 programming_projects = []
-pa_file = "programming_archive.json"
+pa_file = "projects_and_archives/programming_archive.json"
 programming_archive = []
-ep_file = "everyday_projects.json"
+ep_file = "projects_and_archives/everyday_projects.json"
 everyday_projects = []
-ea_file = "everyday_archive.json"
+ea_file = "projects_and_archives/everyday_archive.json"
 everyday_archive = []
-fa_file = "full_archive.json"
+fa_file = "projects_and_archives/full_archive.json"
 full_archive = []
 
 def initialize_project_lists():
     with open(pp_file, "r") as file:
-        p_projects = json.load(file)
-        for project in p_projects:
-            programming_projects.append(project)
+        try:
+            p_projects = json.load(file)
+            for project in p_projects:
+                programming_projects.append(project)
+        except:
+            print("Currently no programming projects available")
+            pass
 
     with open(pa_file, "r") as file:
-        pa = json.load(file)
-        for project in pa:
-            programming_archive.append(project)
-   
+        try:
+            pa = json.load(file)
+            for project in pa:
+                programming_archive.append(project)
+        except:
+            print("Currently no everyday projects available")
+            pass
+
     with open(ep_file, "r") as file:
         e_projects = json.load(file)
         for project in e_projects:
